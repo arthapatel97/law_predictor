@@ -25,40 +25,53 @@ mysql = MySQL(app)
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index/')
 @app.route('/index/<name>')
+
 def index():
-    g = "bro"
     rows = ","
     if request.method == "POST":
 
         details = request.form
         query1 = details['docket_number']
         query2 = details['people_id']
+        query22 = details['people_id_delete']
         query3 = details['location_id']
-        # mycursor = mydb.cursor()
-
-        # sql = "INSERT IGNORE INTO people (people_id, people_name) VALUES (%s, %s)"
-        # val = (500, "wild")
-        # mycursor.execute(sql, val)
-
-        # mycursor.execute(query)
-        # mydb.commit()
-
+        query222 = details['people_name']
+        query2222 = details['people_id_update']
 
         cur = mysql.connection.cursor()
         if(not (query1 == "")):
             row = cur.execute("select * from Cases where docket_number = " + query1)
         if(not (query2 == "")):
             row = cur.execute("select * from people where people_id = " + query2)
+        if(not (query22 == "")):
+            row = cur.execute("delete from people where people_id = " + query22)
+
         if(not (query3 == "")):
             row = cur.execute("select * from location where location_id = " + query3)
+
+        if(not (query222 == "")):
+            row = cur.execute("insert into people(people_id, people_name) values(" + query222 + ")")
+
+        if(not (query2222 == "")):
+            query_arr = query2222.split(",")
+            row = cur.execute("update people set people_id = "+ query_arr[1] + " where people_id = " + query_arr[0])
+
+
+        print(query222)
+
         # row = cur.execute(query)
         rows = cur.fetchall()
         for row in rows:
             print(row)
         mysql.connection.commit()
         cur.close()
-        # print(query)
-    return render_template('index.html',output = rows[0])
+
+        # if(not (query22 == "")):
+        #     rows = ""
+        # else:
+        #     rows = rows[0]
+
+    return render_template('index.html',output = rows)
 
 @app.route('/insert', methods=['GET', 'POST'])
 def index1():
