@@ -1,31 +1,130 @@
-<HTML>
-    <BODY bgcolor="cyan">
-    <form method="POST" action="">
-        <center>
-        <H1> Photon in double-slit Demo </H1> <br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Legal Predictor</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
 
-        Docket Number <input type = "text" name= "docket_number" /> <br>
-        <input type = "submit">
-<br>
 
-        People ID <input type = "text" name= "people_id" /> <br>
-        <input type = "submit">
-<br>
-        Delete People ID <input type = "text" name= "people_id_delete" /> <br>
-        <input type = "submit">
-<br>
-        Insert (People ID, People Name) <input type = "text" name= "people_name" /> <br>
-        <input type = "submit">
-<br>
-        Location ID <input type = "text" name= "location_id" /> <br>
-        <input type = "submit">
-<br>
-        update People ID <input type = "text" name= "people_id_update" /> <br>
-        <input type = "submit">
-<br>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Case Information!
+				</span>
 
-        <p1>{{ output }}</p1>
-        </center>
-</form>
-</BODY>
-</HTML>
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Query Based on Docket Number</span>
+					<input class="input100" type="text" name = "docket_number" placeholder="Enter Docket Number">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Query Based on People ID</span>
+					<input class="input100" type="text" name = "people_id" placeholder="Enter People ID">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Query Based on Location ID</span>
+					<input class="input100" type="text" name = "location_id" placeholder="Enter Location ID">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Delete Based on People ID</span>
+					<input class="input100" type="text" name = "people_id_delete" placeholder="Enter People ID">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Insert Based on People ID, People Name</span>
+					<input class="input100" type="text" name = "people_name" placeholder="Enter People ID and People Name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Update Based on People ID</span>
+					<input class="input100" type="text" name= "people_id_update" placeholder="Enter People ID">
+					<span class="focus-input100"></span>
+				</div>
+
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn">
+							<span>
+								Submit
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+<p1>{{ output }}</p1>
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>
