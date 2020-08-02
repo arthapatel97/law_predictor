@@ -38,6 +38,8 @@ def index():
         query222 = details['people_name']
         query2222 = details['people_id_update']
 
+        print("Details")
+
         cur = mysql.connection.cursor()
         if(not (query1 == "")):
             row = cur.execute("select * from Cases where docket_number = " + query1)
