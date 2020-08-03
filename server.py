@@ -130,30 +130,29 @@ def index2():
     # print(X)
     X = X.fillna(-999)
     Y = Y.fillna(3)
-    X[['DEF']] = X[['DEF']].astype(str)
+    # X[['DEF']] = X[['DEF']].astype(str)
     X[['DISTRICT']] = X[['DISTRICT']].apply(preprocessing.LabelEncoder().fit_transform)
     X[['FILEDATE']] = X[['FILEDATE']].apply(preprocessing.LabelEncoder().fit_transform)
-    X[['FDATEUSE']] = X[['FDATEUSE']].apply(preprocessing.LabelEncoder().fit_transform)
+    # X[['FDATEUSE']] = X[['FDATEUSE']].apply(preprocessing.LabelEncoder().fit_transform)
     X[['SECTION']] = X[['SECTION']].apply(preprocessing.LabelEncoder().fit_transform)
-    X[['SUBSECT']] = X[['SUBSECT']].apply(preprocessing.LabelEncoder().fit_transform)
-    X[['JURY']] = X[['JURY']].apply(preprocessing.LabelEncoder().fit_transform)
-    X[['ARBIT']] = X[['ARBIT']].apply(preprocessing.LabelEncoder().fit_transform)
-    X[['MDLDOCK']] = X[['MDLDOCK']].apply(preprocessing.LabelEncoder().fit_transform)
+    # X[['SUBSECT']] = X[['SUBSECT']].apply(preprocessing.LabelEncoder().fit_transform)
+    # X[['JURY']] = X[['JURY']].apply(preprocessing.LabelEncoder().fit_transform)
+    # X[['ARBIT']] = X[['ARBIT']].apply(preprocessing.LabelEncoder().fit_transform)
+    # X[['MDLDOCK']] = X[['MDLDOCK']].apply(preprocessing.LabelEncoder().fit_transform)
     X[['PLT']] = X[['PLT']].apply(preprocessing.LabelEncoder().fit_transform)
-    X[['DEF']] = X[['DEF']].apply(preprocessing.LabelEncoder().fit_transform)
-    X[['TRANSORG']] = X[['TRANSORG']].apply(preprocessing.LabelEncoder().fit_transform)
-    X[['TERMDATE']] = X[['TERMDATE']].apply(preprocessing.LabelEncoder().fit_transform)
+    # X[['DEF']] = X[['DEF']].apply(preprocessing.LabelEncoder().fit_transform)
+    # X[['TRANSORG']] = X[['TRANSORG']].apply(preprocessing.LabelEncoder().fit_transform)
+    # X[['TERMDATE']] = X[['TERMDATE']].apply(preprocessing.LabelEncoder().fit_transform)
     X[['TDATEUSE']] = X[['TDATEUSE']].apply(preprocessing.LabelEncoder().fit_transform)
-    X[['TRMARB']] = X[['TRMARB']].apply(preprocessing.LabelEncoder().fit_transform)
+    # X[['TRMARB']] = X[['TRMARB']].apply(preprocessing.LabelEncoder().fit_transform)
 
 # Perform a train/test split
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.1, random_state = 100)
     # print(len(y_train), len(X_train))
-
-    feature_names = ['CIRCUIT', 'DISTRICT', 'OFFICE', 'DOCKET', 'ORIGIN', 'FILEDATE', 'FDATEUSE', 'JURIS',
-                 'NOS', 'SECTION', 'SUBSECT', 'RESIDENC', 'JURY', 'CLASSACT', 'DEMANDED', 'COUNTY',
-                 'ARBIT', 'MDLDOCK', 'PLT', 'DEF', 'TRANSOFF', 'TRANSDOC', 'TRANSORG', 'TERMDATE',
-                 'TDATEUSE', 'TRCLACT', 'PROCPROG', 'DISP', 'NOJ', 'AMTREC', 'TRMARB', 'PROSE', 'TAPEYEAR']
+    # print(X_test.iloc[0])
+    feature_names = ['DISTRICT', 'OFFICE', 'DOCKET', 'ORIGIN', 'FILEDATE', 'JURIS',
+                 'NOS', 'SECTION', 'RESIDENC', 'DEMANDED', 'COUNTY',
+                 'PLT','TDATEUSE','TAPEYEAR']
 
     # Fit the DT Classifier to the data
     clf_gini = DecisionTreeClassifier(criterion="gini",
@@ -173,10 +172,41 @@ def index2():
 
 
     importantFeatures = sorted(zip(feature_names, clf_gini.feature_importances_), key=lambda x: x[1], reverse=True)
-    # for feature in importantFeatures:
-    #     print(feature)
-    # print('Decision tree accuracy: %s' % clf_gini.score(X_test, y_test))
-    print("hi")
+    for feature in importantFeatures:
+        print(feature)
+    print('Decision tree accuracy: %s' % clf_gini.score(X_test, y_test))
+    # print("hi")
+
+    # test_case = pd.Series([2,56,5,9700614,1,1273,99,4,95,40,0,12,0,-8,0,36067,0,0,487,3032,-8,-8,0,1473,78,-8,2,4,2,250,0,0,1997], index=['CIRCUIT', 'DISTRICT', 'OFFICE', 'DOCKET', 'ORIGIN', 'FILEDATE', 'FDATEUSE', 'JURIS',
+    #              'NOS', 'SECTION', 'SUBSECT', 'RESIDENC', 'JURY', 'CLASSACT', 'DEMANDED', 'COUNTY',
+    #              'ARBIT', 'MDLDOCK', 'PLT', 'DEF', 'TRANSOFF', 'TRANSDOC', 'TRANSORG', 'TERMDATE',
+    #              'TDATEUSE', 'TRCLACT', 'PROCPROG', 'DISP', 'NOJ', 'AMTREC', 'TRMARB', 'PROSE', 'TAPEYEAR'], name=6159402)
+
+    test_case = X_test.iloc[0]
+    # # print(X_test.iloc[0])
+    # result = clf_gini.predict([test_case])
+    # test_case['NOJ'] = -8
+    # test_case['DISP'] = 6
+    # test_case['AMTREC'] = 0
+    test_case['JURIS']= 3
+    test_case['DISTRICT']= 87
+    test_case['PLT'] = 'PARKER'
+    test_case['NOS'] = 791
+    # test_case['DEF'] = 'MISSOURI PACIFIC RR'
+    # test_case['SUBSECT']= -8
+    test_case['COUNTY']= 40015
+    le = preprocessing.LabelEncoder()
+    encoded_strings = le.fit_transform([test_case['PLT']])
+
+    test_case['PLT'] = encoded_strings[0]
+    # test_case['DEF'] = encoded_strings[1]
+
+
+    # print(result)
+
+
+    a = clf_gini.predict([test_case])
+    print(a)
 
     return render_template('index2.html')
 
