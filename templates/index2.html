@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<form method="POST" action="">
 <head>
-	<title>Legal Predictor</title>
+	<!-- <title>Legal Predictor</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/>
+	<!-- <link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/> -->
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css"> -->
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css"> -->
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css"> -->
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css"> -->
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../static/vendor/animsition/css/animsition.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../static/vendor/animsition/css/animsition.min.css"> -->
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css"> -->
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../static/vendor/daterangepicker/daterangepicker.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../static/vendor/daterangepicker/daterangepicker.css"> -->
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../static/css/util.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css"> -->
 <!--===============================================================================================-->
 </head>
 <body>
+	<form method="POST" action="">
 
+		District <input type = "text" name= "district" /> <br>
+	<br>
+		Office <input type = "text" name= "office" /> <br>
+	<br>
+		Amount Demanded <input type = "text" name= "demanded" /> <br>
+	<br>
+		Jurisdiction <input type = "text" name= "juris" /> <br>
+	<br>
+		Origin <input type = "text" name= "origin" /> <br>
+	<br>
+		Diversity Residence <input type = "text" name= "residenc" /> <br>
+	<br>
+		Nature of Suit <input type = "text" name= "nos" /> <br>
+	<br>
+
+		Section <input type = "text" name= "section" /> <br>
+	<br>
+
+		County <input type = "text" name= "county" /> <br>
+	<br>
+	<input type = "submit">
+	<br>
+
+			<p1>{{ output }}</p1>
+	</form>
 
 <!--===============================================================================================-->
-
-
 </body>
 </html>

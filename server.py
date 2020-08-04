@@ -92,7 +92,15 @@ def index():
 @app.route('/insert', methods=['GET', 'POST'])
 
 def index2():
-    law_records_df = pd.read_csv('law_record_data_cleaned.csv', sep=',')
+    sql_select_Query = "select * from training_model"
+    cursor = mysql.connection.cursor()
+    cursor.execute(sql_select_Query)
+    records = cursor.fetchall()
+
+    law_records_df = pd.DataFrame(records, columns=["JURIS", "NOS", "SECTION", "DISTRICT", "ORIGIN", "DOCKET", "RESIDENC", "TAPEYEAR", "FILEDATE", "PLT", "TDATEUSE", "OFFICE", "DEMANDED", "COUNTY", "JUDGEMENT"])
+    print(law_records_df)
+
+    # law_records_df = pd.read_csv('law_record_data_cleaned.csv', sep=',')
 
     law_records_neg8_df = law_records_df.query('JUDGEMENT == -8')
     law_records_1_df = law_records_df.query('JUDGEMENT == 1')
@@ -174,6 +182,8 @@ def index2():
     importantFeatures = sorted(zip(feature_names, clf_gini.feature_importances_), key=lambda x: x[1], reverse=True)
     for feature in importantFeatures:
         print(feature)
+
+
     print('Decision tree accuracy: %s' % clf_gini.score(X_test, y_test))
     # print("hi")
 
@@ -183,32 +193,63 @@ def index2():
     #              'TDATEUSE', 'TRCLACT', 'PROCPROG', 'DISP', 'NOJ', 'AMTREC', 'TRMARB', 'PROSE', 'TAPEYEAR'], name=6159402)
 
     test_case = X_test.iloc[0]
+    a  = ""
+    if request.method == "POST":
+        details = request.form
+
+        if(not (details['district'] == "")):
+            test_case['DISTRICT'] = details['district']
+
+        if(not (details['office'] == "")):
+            test_case['OFFICE'] = details['office']
+
+        if(not (details['demanded'] == "")):
+            test_case['DEMANDED'] = details['demanded']
+
+        if(not (details['juris'] == "")):
+            test_case['JURIS'] = details['juris']
+
+        if(not (details['origin'] == "")):
+            test_case['ORIGIN'] = details['origin']
+
+        if(not (details['residenc'] == "")):
+            test_case['RESIDENC'] = details['residenc']
+
+        if(not (details['nos'] == "")):
+            test_case['NOS'] = details['nos']
+
+        if(not (details['section'] == "")):
+            test_case['SECTION'] = details['section']
+
+        if(not (details['county'] == "")):
+            test_case['COUNTY'] = details['county']
+
     # # print(X_test.iloc[0])
     # result = clf_gini.predict([test_case])
     # test_case['NOJ'] = -8
     # test_case['DISP'] = 6
     # test_case['AMTREC'] = 0
-    test_case['JURIS']= 3
-    test_case['DISTRICT']= 87
-    test_case['PLT'] = 'PARKER'
-    test_case['NOS'] = 791
-    # test_case['DEF'] = 'MISSOURI PACIFIC RR'
-    # test_case['SUBSECT']= -8
-    test_case['COUNTY']= 40015
-    le = preprocessing.LabelEncoder()
-    encoded_strings = le.fit_transform([test_case['PLT']])
-
-    test_case['PLT'] = encoded_strings[0]
+        # test_case['JURIS']= 1
+        # # test_case['DISTRICT']= 87
+        # test_case['PLT'] = 'UNITED STATES OF'
+        # test_case['NOS'] = 140
+        # # test_case['DEF'] = 'MISSOURI PACIFIC RR'
+        # # test_case['SUBSECT']= -8
+        # test_case['COUNTY']= 36047
+        # le = preprocessing.LabelEncoder()
+        # encoded_strings = le.fit_transform([test_case['PLT']])
+        #
+        # test_case['PLT'] = encoded_strings[0]
     # test_case['DEF'] = encoded_strings[1]
 
 
     # print(result)
 
 
-    a = clf_gini.predict([test_case])
-    print(a)
+        a = clf_gini.predict([test_case])
+        print(a)
 
-    return render_template('index2.html')
+    return render_template('index2.html', output = a, result = 'Decision tree accuracy: %s' % clf_gini.score(X_test, y_test))
 
 
 

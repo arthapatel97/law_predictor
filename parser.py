@@ -5,7 +5,7 @@ import random
 import warnings
 warnings.filterwarnings("ignore")
 
-nums = random.sample(range(1000000,3000000), 200)
+nums = random.sample(range(1000000,3000000), 5000)
 
 mydb = mysql.connector.connect(user='root', password='password',
                               host='localhost',
@@ -53,6 +53,25 @@ for j in range(len(nums)):
     disposition = int(arr[33])
     natureofjudgement = int(arr[34])
     judgement = int(arr[36])
+
+    JURIS = arr[7]
+    NOS= arr[8]
+    SECTION = arr[10]
+    DISTRICT= arr[1]
+    ORIGIN = arr[4]
+    DOCKET = arr[3]
+    RESIDENC = arr[12]
+    TAPEYEAR = arr[45]
+    FILEDATE = arr[5]
+    PLT = arr[21]
+    TDATEUSE= arr[28]
+    OFFICE= arr[2]
+    DEMANDED= arr[15]
+    COUNTY= arr[18]
+    JUDGEMENT = arr[36]
+
+
+
     case_name = "Civil"
 
     mycursor = mydb.cursor()
@@ -77,6 +96,11 @@ for j in range(len(nums)):
     sql = "INSERT IGNORE INTO Cases (docket_number, location_id, case_name, filing_date, termination_date, disposition, nature, judgement, people_of_interest_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
     val = (docket_num, location_id, case_name, filing_date, termination_date, disposition, natureofjudgement, judgement,people_of_interest_id)
     mycursor.execute(sql, val)
+
+    sql = "INSERT IGNORE INTO training_model (juris, nos, section, district, origin, docket, residenc, tapeyear, filedate, plt, tdateuse, office, demanded, county, judgement) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    val = (JURIS, NOS, SECTION, DISTRICT, ORIGIN, DOCKET, RESIDENC, TAPEYEAR, FILEDATE, PLT, TDATEUSE, OFFICE, DEMANDED, COUNTY, JUDGEMENT)
+    mycursor.execute(sql, val)
+
 
     mydb.commit()
     person_id += 2
