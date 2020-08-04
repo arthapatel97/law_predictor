@@ -102,16 +102,18 @@ def index2():
 
     # law_records_df = pd.read_csv('law_record_data_cleaned.csv', sep=',')
 
-    law_records_neg8_df = law_records_df.query('JUDGEMENT == -8')
+    # law_records_neg8_df = law_records_df.query('JUDGEMENT == -8')
     law_records_1_df = law_records_df.query('JUDGEMENT == 1')
     law_records_2_df = law_records_df.query('JUDGEMENT == 2')
     law_records_3_df = law_records_df.query('JUDGEMENT == 3')
-    threshold = 3000
 
-    law_records_neg8_df = resample(law_records_neg8_df,
-                            replace = False,
-                            n_samples = threshold,
-                            random_state = 27)
+    # threshold = 1300
+    #
+    # law_records_neg8_df = resample(law_records_neg8_df,
+    #                         replace = False,
+    #                         n_samples = threshold,
+    #                         random_state = 27)
+
 
     law_records_1_df = resample(law_records_1_df,
                             replace = False,
@@ -128,7 +130,8 @@ def index2():
                             n_samples = law_records_3_df.shape[0],
                             random_state = 27)
 
-    df_balanced = pd.concat([law_records_neg8_df, law_records_1_df, law_records_2_df, law_records_3_df])
+    # df_balanced = pd.concat([law_records_neg8_df, law_records_1_df, law_records_2_df, law_records_3_df])
+    df_balanced = pd.concat([law_records_1_df, law_records_2_df, law_records_3_df])
     df_balanced = df_balanced.reset_index(drop=True)
 
     df_balanced.shape
@@ -224,6 +227,7 @@ def index2():
         if(not (details['county'] == "")):
             test_case['COUNTY'] = details['county']
 
+
     # # print(X_test.iloc[0])
     # result = clf_gini.predict([test_case])
     # test_case['NOJ'] = -8
@@ -245,8 +249,10 @@ def index2():
 
     # print(result)
 
-
-        a = clf_gini.predict([test_case])
+        if((details['district'] == "") and (details['county'] == "") and (details['demanded'] == "") and (details['juris'] == "") and (details['origin'] == "") and (details['residenc'] == "") and (details['nos'] == "") and (details['section'] == "") and (details['county'] == "")):
+            a = "All fields empty!"
+        else:
+            a = clf_gini.predict([test_case])
         print(a)
 
     return render_template('index2.html', output = a, result = 'Decision tree accuracy: %s' % clf_gini.score(X_test, y_test))
