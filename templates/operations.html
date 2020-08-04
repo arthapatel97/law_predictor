@@ -32,8 +32,22 @@
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					Case Information!
+					Operations!
 				</span>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">What Operation Do You Want To Perform?</span>
+					<div>
+						<select class="selection-2" name="operation">
+							<option value="">Select Operation</option>
+							<option value="QUERY">QUERY</option>
+							<option value="DELETE">DELETE</option>
+							<option value="INSERT">INSERT</option>
+							<option value="UPDATE">UPDATE</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Enter District</span>
@@ -114,13 +128,30 @@
 		</div>
 	</div>
 
-
-
-
-
-	<div id="dropDownSelect1"></div>
+<div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
+	<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/bootstrap/js/popper.js"></script>
+	<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="../static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/js/main.js"></script>
 
 
 </body>
