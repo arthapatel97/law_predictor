@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- <form method="POST" action=""> -->
 <head>
 	<title>Legal Predictor</title>
 	<meta charset="UTF-8">
@@ -24,66 +23,93 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../static/css/util.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/modal.css">
-
-	
 <!--===============================================================================================-->
 </head>
 <body>
 
-<!-- <button id="myBtn">Open Modal</button> -->
-<!-- The Modal -->
-<!-- <div id="myModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>Modal Header</h2>
-    </div>
-    <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
-    </div>
-    <div class="modal-footer">
-      <h3>Modal Footer</h3>
-    </div>
-  </div>
-</div>
- -->
+	<form method="POST" action="">
 	<div class="container-contact100">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					Legal Predictor!
+					Case Information!
 				</span>
 
 				<div class="wrap-input100 validate-input">
-					<h2 class="input100"><a href="query.html">QUERY</a></h2>
+					<span class="label-input100">Enter District</span>
+					<input class="input100" type="text" name = "district" placeholder="District">
+					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
-					<h2 class="input100"><a href="index.html">INSERT</a></h2>
+					<span class="label-input100">Enter Office</span>
+					<input class="input100" type="text" name = "office" placeholder="Office">
+					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
-					<h2 class="input100"><a href="delete.html">DELETE</h2>
+					<span class="label-input100">Enter Demand Amount</span>
+					<input class="input100" type="text" name = "demanded" placeholder="Demand Amount">
+					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
-					<h2 class="input100"><a href="update.html">UPDATE</h2>
+					<span class="label-input100">Enter Jurisdiction</span>
+					<input class="input100" type="text" name = "juris" placeholder="Jurisdiction">
+					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
-					<h2 class="input100"><a href="ai.html">LEGAL PREDICTOR</h2>
+					<span class="label-input100">Enter Origin</span>
+					<input class="input100" type="text" name = "origin" placeholder="Origin">
+					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
-					<h2 class="input100"><a href="existing.html">EXISTING DEMO</h2>
+					<span class="label-input100">Enter Diversity Residence</span>
+					<input class="input100" type="text" name= "residenc" placeholder="Diversity Residence">
+					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
-					<h2 class="input100"><a href="https://wiki.illinois.edu/wiki/display/CS411SU20/Photon+in+double-slit">WIKI</h2>
+					<span class="label-input100">Enter Nature of Suit</span>
+					<input class="input100" type="text" name = "nos" placeholder="Nature of Suit">
+					<span class="focus-input100"></span>
 				</div>
 
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Enter Section</span>
+					<input class="input100" type="text" name= "section" placeholder="Section">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Enter County</span>
+					<input class="input100" type="text" name= "county" placeholder="County">
+					<span class="focus-input100"></span>
+				</div>
+
+				
+
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn">
+							<span>
+								Submit
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+				<br> 
+				<div class="wrap-input100 validate-input"> 
+				<!-- <input class="input100" type="text" name = "output" placeholder="Output Will Populate Here">  -->
+				<p1>{{ output }}</p1>
+				<span class="focus-input100">
+				</span> 
+			</div> 
 			</form>
 		</div>
 	</div>
@@ -92,12 +118,11 @@
 
 
 
-<!--===============================================================================================-->
-	<script src ="../static/js/modal.js"></script>
-<!--===============================================================================================-->
 	<div id="dropDownSelect1"></div>
+
 <!--===============================================================================================-->
 
 
 </body>
 </html>
+
