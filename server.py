@@ -36,11 +36,27 @@ app.config['MYSQL_DB'] = 'Case_record'
 mysql = MySQL(app)
 
 
+@app.route('/operations.html', methods=['GET', 'POST'])
+# @app.route('/index/')
+# @app.route('/index/<name>')
+
+def index0():
+    return render_template('operations.html')
+
+
+
 @app.route('/', methods=['GET', 'POST'])
-@app.route('/index/')
-@app.route('/index/<name>')
+# @app.route('/index/')
+# @app.route('/index/<name>')
 
 def index():
+    return render_template('index.html')
+
+@app.route('/existing.html', methods=['GET', 'POST'])
+# @app.route('/index/')
+# @app.route('/index/<name>')
+
+def index2():
     rows = ","
     if request.method == "POST":
 
@@ -87,11 +103,11 @@ def index():
         # else:
         #     rows = rows[0]
 
-    return render_template('index.html',output = rows)
+    return render_template('existing.html',output = rows)
 
-@app.route('/insert', methods=['GET', 'POST'])
+@app.route('/ai.html', methods=['GET', 'POST'])
 
-def index2():
+def index3():
     sql_select_Query = "select * from training_model"
     cursor = mysql.connection.cursor()
     cursor.execute(sql_select_Query)
@@ -249,13 +265,13 @@ def index2():
 
     # print(result)
 
-        if((details['district'] == "") and (details['county'] == "") and (details['demanded'] == "") and (details['juris'] == "") and (details['origin'] == "") and (details['residenc'] == "") and (details['nos'] == "") and (details['section'] == "") and (details['county'] == "")):
+        if((details['district'] == "") and (details['office'] == "") and (details['county'] == "") and (details['demanded'] == "") and (details['juris'] == "") and (details['origin'] == "") and (details['residenc'] == "") and (details['nos'] == "") and (details['section'] == "") and (details['county'] == "")):
             a = "All fields empty!"
         else:
             a = clf_gini.predict([test_case])
         print(a)
 
-    return render_template('index2.html', output = a, result = 'Decision tree accuracy: %s' % clf_gini.score(X_test, y_test))
+    return render_template('ai.html', output = a, result = 'Decision tree accuracy: %s' % clf_gini.score(X_test, y_test))
 
 
 
