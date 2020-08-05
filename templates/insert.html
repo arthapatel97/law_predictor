@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Legal Predictor</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+<script type="text/javascript">
+		function showfield(name){
+		  if(name=='people') {
+			  document.getElementById("people_id").style.display="";
+			  document.getElementById("people_name").style.display="";
+			  document.getElementById("location_id").style.display="none";
+			  document.getElementById("circuit").style.display="none";
+			  document.getElementById("district").style.display="none";
+			  document.getElementById("office").style.display="none";
+			  document.getElementById("people_of_interest_id").style.display="none";
+			  document.getElementById("plaintiff_id").style.display="none";
+			  document.getElementById("defendant_id").style.display="none";
+			  document.getElementById("docket_number").style.display="none";
+			  document.getElementById("case_name").style.display="none";
+			  document.getElementById("filing_date").style.display="none";
+			  document.getElementById("termination_date").style.display="none";
+			  document.getElementById("disposition").style.display="none";
+			  document.getElementById("nature_of_judgement").style.display="none";
+			  document.getElementById("judgement").style.display="none";
+
+		  } else if(name=='location') {
+			  document.getElementById("people_id").style.display="none";
+ 			  document.getElementById("people_name").style.display="none";
+			  document.getElementById("location_id").style.display="";
+			  document.getElementById("circuit").style.display="";
+			  document.getElementById("district").style.display="";
+			  document.getElementById("office").style.display="";
+			  document.getElementById("people_of_interest_id").style.display="none";
+			  document.getElementById("plaintiff_id").style.display="none";
+			  document.getElementById("defendant_id").style.display="none";
+			  document.getElementById("docket_number").style.display="none";
+			  document.getElementById("case_name").style.display="none";
+			  document.getElementById("filing_date").style.display="none";
+			  document.getElementById("termination_date").style.display="none";
+			  document.getElementById("disposition").style.display="none";
+			  document.getElementById("nature_of_judgement").style.display="none";
+			  document.getElementById("judgement").style.display="none";
+
+		 } else if(name=='people_of_interest') {
+			  document.getElementById("people_id").style.display="none";
+ 			  document.getElementById("people_name").style.display="none";
+			  document.getElementById("location_id").style.display="none";
+			  document.getElementById("circuit").style.display="none";
+			  document.getElementById("district").style.display="none";
+			  document.getElementById("office").style.display="none";
+			  document.getElementById("people_of_interest_id").style.display="";
+			  document.getElementById("plaintiff_id").style.display="";
+			  document.getElementById("defendant_id").style.display="";
+			  document.getElementById("docket_number").style.display="none";
+			  document.getElementById("case_name").style.display="none";
+			  document.getElementById("filing_date").style.display="none";
+			  document.getElementById("termination_date").style.display="none";
+			  document.getElementById("disposition").style.display="none";
+			  document.getElementById("nature_of_judgement").style.display="none";
+			  document.getElementById("judgement").style.display="none";
+		 } else if(name=='Cases') {
+			  document.getElementById("people_id").style.display="none";
+ 			  document.getElementById("people_name").style.display="none";
+			  document.getElementById("location_id").style.display="";
+			  document.getElementById("circuit").style.display="none";
+			  document.getElementById("district").style.display="none";
+			  document.getElementById("office").style.display="none";
+			  document.getElementById("people_of_interest_id").style.display="";
+			  document.getElementById("plaintiff_id").style.display="none";
+			  document.getElementById("defendant_id").style.display="none";
+			  document.getElementById("docket_number").style.display="";
+			  document.getElementById("case_name").style.display="";
+			  document.getElementById("filing_date").style.display="";
+			  document.getElementById("termination_date").style.display="";
+			  document.getElementById("disposition").style.display="";
+			  document.getElementById("nature_of_judgement").style.display="";
+			  document.getElementById("judgement").style.display="";
+		  }
+		  else{
+			  document.getElementById("people_id").style.display="none";
+ 			  document.getElementById("people_name").style.display="none";
+			  document.getElementById("location_id").style.display="none";
+			  document.getElementById("circuit").style.display="none";
+			  document.getElementById("district").style.display="none";
+			  document.getElementById("office").style.display="none";
+			  document.getElementById("people_of_interest_id").style.display="none";
+			  document.getElementById("plaintiff_id").style.display="none";
+			  document.getElementById("defendant_id").style.display="none";
+			  document.getElementById("docket_number").style.display="none";
+			  document.getElementById("case_name").style.display="none";
+			  document.getElementById("filing_date").style.display="none";
+			  document.getElementById("termination_date").style.display="none";
+			  document.getElementById("disposition").style.display="none";
+			  document.getElementById("nature_of_judgement").style.display="none";
+			  document.getElementById("judgement").style.display="none";
+		  }
+
+
+
+		}
+	</script> 
+
+	<form method="POST" action="">
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Insert into database!
+				</span>
+
+				<div class="wrap-input100 input100-select">
+					
+					<div>
+						<select class="selection-2" name="operation" onchange="showfield(this.options[this.selectedIndex].value)" >
+							<option value="">Select Table</option>
+							<option value="people">people</option>
+							<option value="location">location</option>
+							<option value="people_of_interest">people_of_interest</option>
+							<option value="Cases">Cases</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="people_id" style="display:none">
+					<span class="label-input100">Enter People Id</span>
+					<input class="input100" type="text" name = "people_id" placeholder="People Id">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="people_name" style="display:none">
+					<span class="label-input100">Enter People Name</span>
+					<input class="input100" type="text" name = "people_name" placeholder="People Name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="location_id" style="display:none">
+					<span class="label-input100">Enter Location ID</span>
+					<input class="input100" type="text" name = "location_id" placeholder="Location Id">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="circuit" style="display:none">
+					<span class="label-input100">Enter Circuit</span>
+					<input class="input100" type="text" name = "circuit" placeholder="Circuit">
+					<span class="focus-input100"></span>
+				</div>
+
+
+				<div class="wrap-input100 validate-input" id="district" style="display:none">
+					<span class="label-input100">Enter District</span>
+					<input class="input100" type="text" name = "district" placeholder="District">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="office" style="display:none">
+					<span class="label-input100">Enter Office</span>
+					<input class="input100" type="text" name= "office" placeholder="Office">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="people_of_interest_id" style="display:none">
+					<span class="label-input100">Enter People of Interest Id</span>
+					<input class="input100" type="text" name = "people_of_interest_id" placeholder="People of Interest Id">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="plaintiff_id" style="display:none">
+					<span class="label-input100">Enter Plaintiff Id</span>
+					<input class="input100" type="text" name= "plaintiff_id" placeholder="Plaintiff Id">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="defendant_id" style="display:none">
+					<span class="label-input100">Enter Defendant Id</span>
+					<input class="input100" type="text" name= "defendant_id" placeholder="Defendant Id">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="docket_number" style="display:none">
+					<span class="label-input100">Enter Docket Number</span>
+					<input class="input100" type="text" name= "docket_number" placeholder="Docket Number">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="case_name" style="display:none">
+					<span class="label-input100">Enter Case Name</span>
+					<input class="input100" type="text" name= "case_name" placeholder="Case Name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="filing_date" style="display:none">
+					<span class="label-input100">Enter Filing Date</span>
+					<input class="input100" type="text" name= "filing_date" placeholder="Filing Date">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="termination_date" style="display:none">
+					<span class="label-input100">Enter Termination Date</span>
+					<input class="input100" type="text" name= "termination_date" placeholder="Termination Date">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="disposition" style="display:none">
+					<span class="label-input100">Enter Disposition</span>
+					<input class="input100" type="text" name= "disposition" placeholder="Disposition">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="nature_of_judgement" style="display:none">
+					<span class="label-input100">Enter Nature of Judgement</span>
+					<input class="input100" type="text" name= "nature_of_judgement" placeholder="Nature of Judgement">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" id="judgement" style="display:none">
+					<span class="label-input100">Enter Judgement</span>
+					<input class="input100" type="text" name= "judgement" placeholder="Judgement">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn">
+							<span>
+								Submit
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+				<br> 
+			</form>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div id="dropDownSelect1"></div>
+
+	<!--===============================================================================================-->
+		<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+		<script src="../static/vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+		<script src="../static/vendor/bootstrap/js/popper.js"></script>
+		<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+		<script src="../static/vendor/select2/select2.min.js"></script>
+		<script>
+			$(".selection-2").select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $('#dropDownSelect1')
+			});
+		</script>
+	<!--===============================================================================================-->
+		<script src="../static/vendor/daterangepicker/moment.min.js"></script>
+		<script src="../static/vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+		<script src="../static/vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+		<script src="../static/js/main.js"></script>
+
+
+
+<!--===============================================================================================-->
+
+
+</body>
+</html>
