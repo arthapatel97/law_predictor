@@ -764,7 +764,7 @@ def index_select():
         if (not (query_nature_of_judgement_select == "")):
             if "Cases" not in tables:
                 tables.append("Cases")
-            wheres.append("nature_of_judgement = " + query_nature_of_judgement_select)
+            wheres.append("nature = " + query_nature_of_judgement_select)
 
 
         if (not (query_judgement_select == "")):
