@@ -169,7 +169,6 @@ def index_insert():
         query_office_select = details['office']
         query_people_of_interest_id_select = details['people_of_interest_id']
         query_plaintiff_id_select = details['plaintiff_id']
-
         query_defendant_id_select = details['defendant_id']
         query_docket_number_select = details['docket_number']
         query_case_name_select = details['case_name']
@@ -286,7 +285,7 @@ def index_insert():
                 value_string = query_case_name_select
                 column_string= "case_name"
             else:
-                value_string += ", " + query_case_name_select
+                value_string += ", '" + query_case_name_select + "'"
                 column_string += ", case_name"
 
 
@@ -296,7 +295,7 @@ def index_insert():
                 value_string = "'"+ query_filing_date_select +"'"
                 column_string= "filing_date"
             else:
-                value_string += ", '" + query_filing_date_select +"''"
+                value_string += ", '" + query_filing_date_select +"'"
                 column_string += ", filing_date"
 
         if (not (query_termination_date_select == "")):
@@ -483,9 +482,9 @@ def index_update():
         if (not (query_case_name_select == "")):
             table_string = "Cases"
             if(set_string==""):
-                set_string = "case_name = " + query_case_name_select
+                set_string = "case_name = '" + query_case_name_select + "'"
             else:
-                set_string += ", case_name = " + query_case_name_select
+                set_string += ", case_name = '" + query_case_name_select + "'"
 
 
 
@@ -606,9 +605,9 @@ def index_update():
 
         if (not (query_case_name_select2 == "")):
             if(where_string==""):
-                where_string = "case_name = " + query_case_name_select2
+                where_string = "case_name = '" + query_case_name_select2 + "'"
             else:
-                where_string += " and case_name = " + query_case_name_select2
+                where_string += " and case_name = '" + query_case_name_select2 + "'"
 
 
 
