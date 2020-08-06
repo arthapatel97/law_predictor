@@ -527,12 +527,6 @@ def index_update():
                 set_string += ", judgement = " + query_judgement_select
 
 
-
-
-
-
-
-
         if (not (query_people_id_select2 == "")):
             if(where_string==""):
                 where_string = "people_id = " + query_people_id_select2
@@ -659,8 +653,6 @@ def index_update():
 
 
 
-
-
 @app.route('/query.html', methods=['GET', 'POST'])
 
 def index_select():
@@ -690,6 +682,40 @@ def index_select():
         wheres = []
         table_string = ""
         where_string = ""
+        if (not (query_docket_number_select == "")):
+            if "Cases" not in tables:
+                tables.append("Cases")
+            wheres.append("docket_number = " + query_docket_number_select)
+
+        if (not (query_case_name_select == "")):
+            if "Cases" not in tables:
+                tables.append("Cases")
+            wheres.append("case_name = '" + query_case_name_select + "'")
+
+        if (not (query_filing_date_select == "")):
+            if "Cases" not in tables:
+                tables.append("Cases")
+            wheres.append("filing_date = '" + query_filing_date_select + "'")
+
+        if (not (query_termination_date_select == "")):
+            if "Cases" not in tables:
+                tables.append("Cases")
+            wheres.append("termination_date = '" + query_termination_date_select + "'")
+
+        if (not (query_disposition_select == "")):
+            if "Cases" not in tables:
+                tables.append("Cases")
+            wheres.append("disposition = " + query_disposition_select)
+
+        if (not (query_nature_of_judgement_select == "")):
+            if "Cases" not in tables:
+                tables.append("Cases")
+            wheres.append("nature = " + query_nature_of_judgement_select)
+
+        if (not (query_judgement_select == "")):
+            if "Cases" not in tables:
+                tables.append("Cases")
+            wheres.append("judgement = " + query_judgement_select)
 
         if (not (query_people_id_select == "")):
             if "people" not in tables:
@@ -735,43 +761,6 @@ def index_select():
             if "people_of_interest" not in tables:
                 tables.append("people_of_interest")
             wheres.append("defendant_id = " + query_defendant_id_select)
-
-        if (not (query_docket_number_select == "")):
-            if "Cases" not in tables:
-                tables.append("Cases")
-            wheres.append("docket_number = " + query_docket_number_select)
-
-        if (not (query_case_name_select == "")):
-            if "Cases" not in tables:
-                tables.append("Cases")
-            wheres.append("case_name = '" + query_case_name_select + "'")
-
-        if (not (query_filing_date_select == "")):
-            if "Cases" not in tables:
-                tables.append("Cases")
-            wheres.append("filing_date = '" + query_filing_date_select + "'")
-
-        if (not (query_termination_date_select == "")):
-            if "Cases" not in tables:
-                tables.append("Cases")
-            wheres.append("termination_date = '" + query_termination_date_select + "'")
-
-        if (not (query_disposition_select == "")):
-            if "Cases" not in tables:
-                tables.append("Cases")
-            wheres.append("disposition = " + query_disposition_select)
-
-        if (not (query_nature_of_judgement_select == "")):
-            if "Cases" not in tables:
-                tables.append("Cases")
-            wheres.append("nature = " + query_nature_of_judgement_select)
-
-
-        if (not (query_judgement_select == "")):
-            if "Cases" not in tables:
-                tables.append("Cases")
-            wheres.append("judgement = " + query_judgement_select)
-
 
         for table in tables:
             if table_string != "":
@@ -1030,11 +1019,11 @@ def index_ai():
 
 
         if(a[0] == 1):
-            winner = "Plaintiff will Win"
+            winner = "Plaintiff Win"
         if(a[0] == 2):
-            winner = "Defendant will Win"
+            winner = "Defendant Win"
         if(a[0] == 3):
-            winner = "Both will Win"
+            winner = "Both Win"
 
     return render_template('ai.html', output = winner)
 
